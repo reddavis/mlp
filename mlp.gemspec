@@ -23,6 +23,7 @@ Gem::Specification.new do |s|
      "LICENSE",
      "README.rdoc",
      "Rakefile",
+     "VERSION",
      "examples/backpropagation_example.rb",
      "examples/patterns_with_base_noise.rb",
      "examples/patterns_with_noise.rb",
@@ -30,6 +31,7 @@ Gem::Specification.new do |s|
      "examples/xor.rb",
      "lib/mlp.rb",
      "lib/neuron.rb",
+     "mlp.gemspec",
      "test/helper.rb",
      "test/test_mlp.rb",
      "test/test_neuron.rb"
