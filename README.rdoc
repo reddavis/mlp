@@ -1,18 +1,46 @@
-= mlp
+= Multi-Layer Perceptron Neural Network
 
-Description goes here.
+I built this to not only learn about the MLP but to also make a very simple, well laid out MLP so other can easily see what's happening.
 
-== Note on Patches/Pull Requests
- 
-* Fork the project.
-* Make your feature addition or bug fix.
-* Add tests for it. This is important so I don't break it in a
-  future version unintentionally.
-* Commit, do not mess with rakefile, version, or history.
-  (if you want to have your own version, that is fine but
-   bump version in a commit by itself I can ignore when I pull)
-* Send me a pull request. Bonus points for topic branches.
+I also suggest checking out http://bit.ly/XEWOc for a great tutorial.
+
+== Install
+
+  gem sources -a http://gems.github.com
+  sudo gem install reddavis-mlp
+
+== How To Use
+  require 'rubygems'
+  require 'mlp'
+  
+  a = MLP.new(:hidden_layers => [2], :output_nodes => 1, :inputs => 2)
+
+  3001.times do |i|
+    a.train([0,0], [0])
+    a.train([0,1], [1])
+    a.train([1,0], [1])
+    error = a.train([1,1], [0])
+    puts "Error after iteration #{i}:\t#{error}" if i%200 == 0
+  end
+
+  puts "Test data"
+  puts "[0,0] = > #{a.feed_forward([0,0]).inspect}"
+  puts "[0,1] = > #{a.feed_forward([0,1]).inspect}"
+  puts "[1,0] = > #{a.feed_forward([1,0]).inspect}"
+  puts "[1,1] = > #{a.feed_forward([1,1]).inspect}"
+  
+== Benchmarks
+
+  The above example produces these times
+  
+           user     system      total        real
+  MLP    0.820000   0.000000   0.820000 (  0.837693)
+  Ai4R   1.180000   0.010000   1.190000 (  1.232388)
+
+== Thanks
+
+* David Richards - For his code reviews and all round helpfulness. - http://github.com/davidrichards
 
 == Copyright
 
-Copyright (c) 2009 reddavis. See LICENSE for details.
+Copyright (c) 2009 Red Davis. See LICENSE for details.
